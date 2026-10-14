@@ -2,6 +2,8 @@
 
 Landing page de **Julio Cesar** (`Juliusggr`): desarrollador de aplicaciones web y de escritorio.
 
+Repositorio canónico: [github.com/Juliusggr/Juliusggr-landing](https://github.com/Juliusggr/Juliusggr-landing).
+
 ## Stack
 
 - Next.js (App Router) + TypeScript
