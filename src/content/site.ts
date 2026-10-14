@@ -21,4 +21,9 @@ export const site = {
     "Me interesa el detalle tipográfico, la densidad calmada de las interfaces y el código que se mantiene limpio con el tiempo. Trabajo en stacks modernos del frontend y en herramientas multiplataforma para escritorio.",
     "Cuando no estoy construyendo productos, exploro sistemas, tipografía y estética espacial — la misma calma técnica que busco en cada interfaz.",
   ],
+  focus: [
+    { label: "Web", detail: "Interfaces modernas, con menos ruido y más precisión." },
+    { label: "Escritorio", detail: "Herramientas multiplataforma, rápidas y claras." },
+    { label: "Detalle", detail: "Tipografía, densidad calmada y código limpio." },
+  ],
 } as const;

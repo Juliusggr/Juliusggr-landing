@@ -13,7 +13,7 @@ export function SiteHeader() {
       <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-5 sm:px-8">
         <a
           href="#inicio"
-          className="font-[family-name:var(--font-display)] text-sm font-semibold tracking-tight text-foreground transition-opacity hover:opacity-80"
+          className="font-[family-name:var(--font-display)] text-lg font-semibold tracking-tight text-foreground transition-opacity hover:opacity-80 sm:text-xl"
         >
           {site.brand}
         </a>

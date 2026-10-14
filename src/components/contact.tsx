@@ -87,7 +87,7 @@ export function Contact() {
         </div>
 
         <div className="mt-10">
-          <Button render={<a href={site.mailto} />} size="lg">
+          <Button nativeButton={false} render={<a href={site.mailto} />} size="lg">
             <Mail data-icon="inline-start" className="size-4" />
             Escribir a {site.email}
           </Button>
