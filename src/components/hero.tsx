@@ -1,9 +1,10 @@
 import Image from "next/image";
 import { ArrowRight, Mail } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { Starfield } from "@/components/starfield";
 import { site } from "@/content/site";
-import portrait from "../../img/vice.png";
+import { cn } from "@/lib/utils";
+import portrait from "../../img/vicefoto.jpg";
 
 export function Hero() {
   return (
@@ -24,34 +25,43 @@ export function Hero() {
             {site.tagline}
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3 animate-fade-up-delay-2">
-            <Button
-              nativeButton={false}
-              render={<a href="#proyectos" />}
-              size="lg"
+            <a
+              href="#proyectos"
+              data-slot="button"
+              className={buttonVariants({ size: "lg" })}
             >
               Ver proyectos
               <ArrowRight data-icon="inline-end" className="size-4" />
-            </Button>
-            <Button
-              nativeButton={false}
-              render={<a href="#contacto" />}
-              variant="outline"
-              size="lg"
+            </a>
+            <a
+              href="#contacto"
+              data-slot="button"
+              className={cn(
+                buttonVariants({ variant: "outline", size: "lg" }),
+                "border border-zinc-200 bg-transparent transition-colors hover:bg-zinc-100 dark:border-zinc-800 dark:bg-transparent dark:hover:bg-zinc-900",
+              )}
             >
               Contactar
               <Mail data-icon="inline-end" className="size-4" />
-            </Button>
+            </a>
           </div>
         </div>
-        <div className="animate-fade-up relative aspect-[4/5] w-36 justify-self-start overflow-hidden rounded-2xl border border-border/80 bg-muted shadow-sm sm:w-52 lg:order-2 lg:w-72 lg:justify-self-end">
-          <Image
-            src={portrait}
-            alt={`Retrato de ${site.name}`}
-            fill
-            preload
-            sizes="(min-width: 1024px) 1280px, (min-width: 640px) 900px, 640px"
-            className="object-cover object-[58%_42%]"
+        <div className="animate-fade-up relative justify-self-start lg:order-2 lg:justify-self-end">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -inset-10 -z-10 rounded-full bg-[radial-gradient(circle,rgba(244,114,182,0.28),rgba(96,165,250,0.2)_42%,transparent_70%)] opacity-0 blur-2xl dark:opacity-80"
           />
+          <div className="relative aspect-square w-36 overflow-hidden rounded-2xl border border-zinc-200/80 bg-zinc-50/70 shadow-sm ring-1 ring-black/5 backdrop-blur-sm sm:w-52 lg:w-72 dark:border-zinc-800/80 dark:bg-zinc-900/40 dark:ring-white/10">
+            <Image
+              src={portrait}
+              alt={`Retrato de ${site.name}`}
+              fill
+              preload
+              quality={92}
+              sizes="(min-width: 1024px) 288px, (min-width: 640px) 208px, 144px"
+              className="object-cover object-center"
+            />
+          </div>
         </div>
       </div>
     </section>

@@ -154,25 +154,6 @@
   animation: star-drift 48s linear infinite;
 }
 
-:root:not(.dark) .starfield {
-  background-image:
-    radial-gradient(circle at 9% 16%, rgba(36, 48, 70, 0.78) 0, transparent 1.8px),
-    radial-gradient(circle at 18% 34%, rgba(36, 48, 70, 0.52) 0, transparent 1.4px),
-    radial-gradient(circle at 27% 9%, rgba(36, 48, 70, 0.64) 0, transparent 1.6px),
-    radial-gradient(circle at 36% 48%, rgba(36, 48, 70, 0.46) 0, transparent 1.4px),
-    radial-gradient(circle at 44% 20%, rgba(36, 48, 70, 0.72) 0, transparent 2.2px),
-    radial-gradient(circle at 52% 64%, rgba(36, 48, 70, 0.42) 0, transparent 1.4px),
-    radial-gradient(circle at 60% 11%, rgba(36, 48, 70, 0.68) 0, transparent 1.8px),
-    radial-gradient(circle at 68% 40%, rgba(36, 48, 70, 0.5) 0, transparent 1.5px),
-    radial-gradient(circle at 76% 22%, rgba(36, 48, 70, 0.76) 0, transparent 2px),
-    radial-gradient(circle at 83% 56%, rgba(36, 48, 70, 0.44) 0, transparent 1.4px),
-    radial-gradient(circle at 91% 14%, rgba(36, 48, 70, 0.6) 0, transparent 1.7px),
-    radial-gradient(circle at 14% 74%, rgba(36, 48, 70, 0.48) 0, transparent 1.5px),
-    radial-gradient(circle at 39% 80%, rgba(36, 48, 70, 0.38) 0, transparent 1.3px),
-    radial-gradient(circle at 70% 76%, rgba(36, 48, 70, 0.44) 0, transparent 1.5px),
-    radial-gradient(circle at 88% 70%, rgba(36, 48, 70, 0.54) 0, transparent 1.6px);
-}
-
 @keyframes star-drift {
   from {
     transform: translateY(0);
@@ -210,6 +191,94 @@
   .animate-fade-up,
   .animate-fade-up-delay,
   .animate-fade-up-delay-2 {
+    animation: none;
+  }
+}
+
+.spotlight {
+  --spotlight: rgba(0, 0, 0, 0.025);
+  --spotlight-edge: rgba(0, 0, 0, 0.1);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.dark .spotlight {
+  --spotlight: rgba(255, 255, 255, 0.04);
+  --spotlight-edge: rgba(186, 210, 255, 0.22);
+}
+
+.spotlight::before,
+.spotlight::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 150ms ease;
+}
+
+.spotlight::before {
+  background: radial-gradient(
+    280px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    var(--spotlight),
+    transparent 55%
+  );
+}
+
+.spotlight::after {
+  padding: 1px;
+  background: radial-gradient(
+    160px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    var(--spotlight-edge),
+    transparent 42%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+}
+
+.spotlight:hover::before,
+.spotlight:hover::after {
+  opacity: 1;
+}
+
+.spotlight > * {
+  position: relative;
+  z-index: 1;
+}
+
+::view-transition-old(root) {
+  animation: theme-fade-out 180ms ease both;
+}
+
+::view-transition-new(root) {
+  animation: theme-fade-in 180ms ease both;
+}
+
+@keyframes theme-fade-out {
+  to {
+    opacity: 0;
+    filter: blur(2px);
+  }
+}
+
+@keyframes theme-fade-in {
+  from {
+    opacity: 0;
+    filter: blur(2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
     animation: none;
   }
 }

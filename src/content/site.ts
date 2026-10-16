@@ -22,8 +22,20 @@ export const site = {
     "Cuando no estoy construyendo productos, exploro sistemas, tipografía y estética espacial — la misma calma técnica que busco en cada interfaz.",
   ],
   focus: [
-    { label: "Web", detail: "Interfaces modernas, con menos ruido y más precisión." },
-    { label: "Escritorio", detail: "Herramientas multiplataforma, rápidas y claras." },
-    { label: "Detalle", detail: "Tipografía, densidad calmada y código limpio." },
+    {
+      label: "Web",
+      detail: "Interfaces y sitios para el navegador.",
+      stack: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+    },
+    {
+      label: "Escritorio",
+      detail: "Aplicaciones de escritorio, nativas y multiplataforma.",
+      stack: ["Electron", ".NET / WPF", "C#", "SQLite"],
+    },
+    {
+      label: "Detalle",
+      detail: "Sistema visual, datos y rendimiento.",
+      stack: ["UI/UX", "Prisma", "Rendimiento"],
+    },
   ],
 } as const;

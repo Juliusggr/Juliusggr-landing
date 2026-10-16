@@ -4,6 +4,7 @@ import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { runWithThemeTransition } from "@/lib/theme-transition";
 
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
@@ -27,7 +28,9 @@ export function ThemeToggle() {
             : "Cambiar a tema oscuro"
           : "Cambiar tema"
       }
-      onClick={() => setTheme(isDark ? "light" : "dark")}
+      onClick={() =>
+        runWithThemeTransition(() => setTheme(isDark ? "light" : "dark"))
+      }
     >
       {mounted && isDark ? (
         <Sun className="size-4" aria-hidden />

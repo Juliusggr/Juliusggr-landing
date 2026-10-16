@@ -1,5 +1,7 @@
 import { Mail } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { CopyEmailButton } from "@/components/copy-email-button";
+import { SpotlightLink } from "@/components/spotlight-link";
+import { buttonVariants } from "@/components/ui/button";
 import { site } from "@/content/site";
 
 const socials = [
@@ -57,40 +59,52 @@ export function Contact() {
           ¿Tienes un proyecto en mente? Escríbeme o sígueme en las redes.
         </p>
 
-        <div className="mt-10 space-y-0 border-t border-border/60">
+        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
           {socials.map((item) => (
-            <a
+            <SpotlightLink
               key={item.label}
               href={item.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-between gap-4 border-b border-border/60 py-4 transition-colors hover:bg-muted/40 sm:px-3"
+              external
+              className="group flex items-center justify-between gap-4 rounded-xl border border-zinc-200/80 bg-zinc-50/70 p-5 backdrop-blur-sm transition-all hover:border-zinc-300 hover:shadow-sm dark:border-zinc-800/80 dark:bg-zinc-900/40 dark:hover:border-zinc-700"
             >
-              <span className="flex items-center gap-3">
+              <span className="flex min-w-0 items-center gap-3">
                 {item.icon === "github" ? (
-                  <GitHubIcon className="size-4 text-muted-foreground" />
+                  <GitHubIcon className="size-4 shrink-0 text-muted-foreground" />
                 ) : (
-                  <XIcon className="size-4 text-muted-foreground" />
+                  <XIcon className="size-4 shrink-0 text-muted-foreground" />
                 )}
-                <span>
+                <span className="min-w-0">
                   <span className="block text-sm font-medium text-foreground">
                     {item.label}
                   </span>
-                  <span className="block text-xs text-muted-foreground">
+                  <span className="block truncate font-mono text-xs tracking-tight text-muted-foreground">
                     {item.detail}
                   </span>
                 </span>
               </span>
-              <span className="text-xs text-muted-foreground">Abrir</span>
-            </a>
+              <span className="inline-flex shrink-0 items-center gap-1 font-mono text-xs tracking-tight text-muted-foreground">
+                Abrir
+                <span
+                  aria-hidden
+                  className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                >
+                  ↗
+                </span>
+              </span>
+            </SpotlightLink>
           ))}
         </div>
 
-        <div className="mt-10">
-          <Button nativeButton={false} render={<a href={site.mailto} />} size="lg">
+        <div className="mt-10 flex flex-wrap items-center gap-3">
+          <a
+            href={site.mailto}
+            data-slot="button"
+            className={buttonVariants({ size: "lg" })}
+          >
             <Mail data-icon="inline-start" className="size-4" />
             Escribir a {site.email}
-          </Button>
+          </a>
+          <CopyEmailButton />
         </div>
       </div>
     </section>
