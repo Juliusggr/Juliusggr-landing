@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Check, Copy } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { site } from "@/content/site";
+import { copyText } from "@/lib/clipboard";
 import { cn } from "@/lib/utils";
 
 export function CopyEmailButton() {
@@ -16,28 +17,7 @@ export function CopyEmailButton() {
   }, [copied]);
 
   async function copyEmail() {
-    try {
-      await navigator.clipboard.writeText(site.email);
-      setCopied(true);
-      return;
-    } catch {
-      // The Clipboard API can be blocked; fall back to a selection copy.
-    }
-
-    try {
-      const field = document.createElement("textarea");
-      field.value = site.email;
-      field.setAttribute("readonly", "");
-      field.style.position = "fixed";
-      field.style.left = "-9999px";
-      document.body.appendChild(field);
-      field.select();
-      const didCopy = document.execCommand("copy");
-      field.remove();
-      setCopied(didCopy);
-    } catch {
-      setCopied(false);
-    }
+    setCopied(await copyText(site.email));
   }
 
   return (

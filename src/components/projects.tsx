@@ -1,4 +1,5 @@
 import { ExternalLink, Star } from "lucide-react";
+import { SpotlightLink } from "@/components/spotlight-link";
 import { site } from "@/content/site";
 import {
   fetchPublicRepos,
@@ -35,10 +36,9 @@ function ProjectRow({ repo }: { repo: GitHubRepo }) {
     : null;
 
   return (
-    <a
+    <SpotlightLink
       href={repo.html_url}
-      target="_blank"
-      rel="noopener noreferrer"
+      external
       className={`group grid gap-3 sm:grid-cols-[1fr_auto] sm:items-start sm:gap-6 ${cardClassName}`}
     >
       <div className="min-w-0">
@@ -53,7 +53,7 @@ function ProjectRow({ repo }: { repo: GitHubRepo }) {
           {repo.description ?? "Sin descripción"}
         </p>
       </div>
-      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground sm:justify-end sm:pt-0.5">
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 font-mono text-xs tracking-tight text-muted-foreground sm:justify-end sm:pt-0.5">
         {repo.language && languageColor ? (
           <span className="inline-flex items-center gap-1.5">
             <span
@@ -72,7 +72,7 @@ function ProjectRow({ repo }: { repo: GitHubRepo }) {
           {formatUpdatedAt(repo.updated_at)}
         </time>
       </div>
-    </a>
+    </SpotlightLink>
   );
 }
 

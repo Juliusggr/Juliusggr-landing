@@ -29,7 +29,7 @@ export function About() {
                   {item.stack.map((tech) => (
                     <li
                       key={tech}
-                      className="rounded-md border border-zinc-200 bg-zinc-100/50 px-2.5 py-0.5 text-xs text-muted-foreground dark:border-zinc-800 dark:bg-zinc-900/50"
+                      className="rounded-md border border-zinc-200 bg-zinc-100/50 px-2.5 py-0.5 font-mono text-xs tracking-tight text-muted-foreground dark:border-zinc-800 dark:bg-zinc-900/50"
                     >
                       {tech}
                     </li>

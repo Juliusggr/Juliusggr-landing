@@ -1,5 +1,6 @@
 import { Mail } from "lucide-react";
 import { CopyEmailButton } from "@/components/copy-email-button";
+import { SpotlightLink } from "@/components/spotlight-link";
 import { buttonVariants } from "@/components/ui/button";
 import { site } from "@/content/site";
 
@@ -60,11 +61,10 @@ export function Contact() {
 
         <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
           {socials.map((item) => (
-            <a
+            <SpotlightLink
               key={item.label}
               href={item.href}
-              target="_blank"
-              rel="noopener noreferrer"
+              external
               className="group flex items-center justify-between gap-4 rounded-xl border border-zinc-200/80 bg-zinc-50/70 p-5 backdrop-blur-sm transition-all hover:border-zinc-300 hover:shadow-sm dark:border-zinc-800/80 dark:bg-zinc-900/40 dark:hover:border-zinc-700"
             >
               <span className="flex min-w-0 items-center gap-3">
@@ -77,12 +77,12 @@ export function Contact() {
                   <span className="block text-sm font-medium text-foreground">
                     {item.label}
                   </span>
-                  <span className="block truncate text-xs text-muted-foreground">
+                  <span className="block truncate font-mono text-xs tracking-tight text-muted-foreground">
                     {item.detail}
                   </span>
                 </span>
               </span>
-              <span className="inline-flex shrink-0 items-center gap-1 text-xs text-muted-foreground">
+              <span className="inline-flex shrink-0 items-center gap-1 font-mono text-xs tracking-tight text-muted-foreground">
                 Abrir
                 <span
                   aria-hidden
@@ -91,7 +91,7 @@ export function Contact() {
                   ↗
                 </span>
               </span>
-            </a>
+            </SpotlightLink>
           ))}
         </div>
 
