@@ -16,7 +16,7 @@ export function About() {
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
-          <ul className="grid gap-5 border-t border-border/60 pt-6 sm:grid-cols-3 lg:grid-cols-1 lg:border-t-0 lg:border-l lg:pt-1 lg:pl-6">
+          <ul className="grid gap-6 border-t border-border/60 pt-6 lg:border-t-0 lg:border-l lg:pt-1 lg:pl-6">
             {site.focus.map((item) => (
               <li key={item.label}>
                 <p className="font-[family-name:var(--font-display)] text-sm font-semibold tracking-tight text-foreground">
@@ -25,6 +25,16 @@ export function About() {
                 <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
                   {item.detail}
                 </p>
+                <ul className="mt-2.5 flex flex-wrap gap-1.5">
+                  {item.stack.map((tech) => (
+                    <li
+                      key={tech}
+                      className="rounded-md border border-zinc-200 bg-zinc-100/50 px-2.5 py-0.5 text-xs text-muted-foreground dark:border-zinc-800 dark:bg-zinc-900/50"
+                    >
+                      {tech}
+                    </li>
+                  ))}
+                </ul>
               </li>
             ))}
           </ul>

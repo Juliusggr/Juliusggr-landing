@@ -154,25 +154,6 @@
   animation: star-drift 48s linear infinite;
 }
 
-:root:not(.dark) .starfield {
-  background-image:
-    radial-gradient(circle at 9% 16%, rgba(36, 48, 70, 0.78) 0, transparent 1.8px),
-    radial-gradient(circle at 18% 34%, rgba(36, 48, 70, 0.52) 0, transparent 1.4px),
-    radial-gradient(circle at 27% 9%, rgba(36, 48, 70, 0.64) 0, transparent 1.6px),
-    radial-gradient(circle at 36% 48%, rgba(36, 48, 70, 0.46) 0, transparent 1.4px),
-    radial-gradient(circle at 44% 20%, rgba(36, 48, 70, 0.72) 0, transparent 2.2px),
-    radial-gradient(circle at 52% 64%, rgba(36, 48, 70, 0.42) 0, transparent 1.4px),
-    radial-gradient(circle at 60% 11%, rgba(36, 48, 70, 0.68) 0, transparent 1.8px),
-    radial-gradient(circle at 68% 40%, rgba(36, 48, 70, 0.5) 0, transparent 1.5px),
-    radial-gradient(circle at 76% 22%, rgba(36, 48, 70, 0.76) 0, transparent 2px),
-    radial-gradient(circle at 83% 56%, rgba(36, 48, 70, 0.44) 0, transparent 1.4px),
-    radial-gradient(circle at 91% 14%, rgba(36, 48, 70, 0.6) 0, transparent 1.7px),
-    radial-gradient(circle at 14% 74%, rgba(36, 48, 70, 0.48) 0, transparent 1.5px),
-    radial-gradient(circle at 39% 80%, rgba(36, 48, 70, 0.38) 0, transparent 1.3px),
-    radial-gradient(circle at 70% 76%, rgba(36, 48, 70, 0.44) 0, transparent 1.5px),
-    radial-gradient(circle at 88% 70%, rgba(36, 48, 70, 0.54) 0, transparent 1.6px);
-}
-
 @keyframes star-drift {
   from {
     transform: translateY(0);
